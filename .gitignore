@@ -4,8 +4,6 @@ dist/
 lib/
 lib/bundle.js*
 node_modules/
-dash_react_graph_vis/metadata.json
-dash_react_graph_vis/bundle.js*
 .npm
 vv/
 venv/
