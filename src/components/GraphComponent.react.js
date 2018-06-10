@@ -8,13 +8,25 @@ import Graph from 'react-graph-vis';
  * react-graph-vis by @crubier and vis.js
  */
 export default class GraphComponent extends Component {
+
+    constructor(props, context) {
+      super(props, context)
+      this.state = {
+        network: {}
+      }
+    }
+ 
     render() {
         const {graph, options, setProps} = this.props;
 
         return (
-            <Graph graph={graph} options={options} />
+            <Graph graph={graph} options={options} getNetwork={network => this.setState({network: network})} />
         );
     }
+
+	componentDidUpdate() {
+		this.state.network.fit();
+	}
 }
 
 GraphComponent.propTypes = {
