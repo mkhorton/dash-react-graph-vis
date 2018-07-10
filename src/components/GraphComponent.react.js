@@ -25,10 +25,11 @@ export default class GraphComponent extends Component {
     }
 
     componentWillUpdate(nextProps, nextState) {
-
+		// this seems un-ideal
         if (nextProps.graph !== this.props.graph) {
             this.state.network.nodes = nextProps.graph.nodes;
             this.state.network.edges = nextProps.graph.edges;
+            this.forceUpdate();
             this.state.network.fit();
         }
 
