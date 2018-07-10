@@ -24,9 +24,15 @@ export default class GraphComponent extends Component {
         );
     }
 
-	componentDidUpdate() {
-		this.state.network.fit();
-	}
+    componentWillUpdate(nextProps, nextState) {
+
+        if (nextProps.graph !== this.props.graph) {
+            this.state.network.nodes = nextProps.graph.nodes;
+            this.state.network.edges = nextProps.graph.edges;
+            this.state.network.fit();
+        }
+
+    }
 }
 
 GraphComponent.propTypes = {
